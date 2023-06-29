@@ -1,6 +1,10 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
+  static values = {
+    recaptchaSiteKey: String,
+  }
+
   connect() {
     this.form = document.querySelector('#snippet_form')
     this.modal = document.querySelector('#unsafe-modal-confirm')
@@ -8,6 +12,30 @@ export default class extends Controller {
     this.flashContainer = document.querySelector('#flash-container')
     this.flashText = document.querySelector('#flash-text')
     this.UNSAFE_WORDS = ['password', 'token', 'key', 'secret', 'mnemonic', 'пароль']
+  }
+
+  loadCaptcha() {
+    if (this.captchaLoaded) return
+
+    const script = document.createElement('script')
+
+    script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(this.recaptchaSiteKeyValue)}`
+    script.onload = () => {
+      grecaptcha.ready(() => {
+        grecaptcha.execute(
+          this.recaptchaSiteKeyValue,
+          {
+            action: 'callback'
+          }
+        ).then(token => {
+          this.form.querySelector('input[name="snippet[recaptcha_token]"]').value = token
+        })
+
+        this.captchaLoaded = true
+      })
+    }
+
+    document.querySelector('head').appendChild(script)
   }
 
   async submitForm(checkUnsafeWords = true) {
