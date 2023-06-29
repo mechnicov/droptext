@@ -26,7 +26,7 @@
     <%= form.hidden_field :recaptcha_token %>
   <% end %>
 
-  <div class="mt-5" data-controller="snippets">
+  <div class="mt-5" data-controller="snippets" data-snippets-unsafe-words-value="<%= Rails.configuration.unsafe_words %>">
     <button class="btn btn-emerald" type="button" data-action="click->snippets#submitForm"><%= t('.save')%></button>
   </div>
 
