@@ -3,6 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static values = {
     recaptchaSiteKey: String,
+    unsafeWords: Array,
   }
 
   connect() {
@@ -11,7 +12,6 @@ export default class extends Controller {
     this.backdrop = document.querySelector('#unsafe-modal-backdrop')
     this.flashContainer = document.querySelector('#flash-container')
     this.flashText = document.querySelector('#flash-text')
-    this.UNSAFE_WORDS = ['password', 'token', 'key', 'secret', 'mnemonic', 'пароль']
   }
 
   loadCaptcha() {
@@ -43,7 +43,7 @@ export default class extends Controller {
 
     if (checkUnsafeWords) {
       const unsafeWord =
-        new RegExp(this.UNSAFE_WORDS.join('|')).exec(formData.get('snippet[body]'))?.shift()
+        new RegExp(this.unsafeWordsValue.join('|'), 'i').exec(formData.get('snippet[body]'))?.shift()
 
       if (unsafeWord) {
         document.querySelector('#unsafe-words').innerHTML = unsafeWord
