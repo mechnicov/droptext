@@ -1,4 +1,6 @@
 class Snippet < ApplicationRecord
+  TOKEN_LENGHT = 3
+
   enum language: {
     auto: 'auto',
     apache: 'apache',

@@ -1,6 +1,6 @@
 class SnippetsController < ApplicationController
   def create
-    Snippets::Create.(params: params.permit!.to_h) do |m|
+    Snippets::Create.(params: params[:snippet]&.permit!.to_h) do |m|
       m.failure :check_recaptcha do |recaptcha_errors|
         render json: recaptcha_errors
       end
