@@ -1,7 +1,5 @@
 module Snippets
-  class Persist
-    include Dry::Transaction::Operation
-
+  class Persist < BaseOperation
     def call(input)
       token = Snippet.create!(token: generate_token, **input[:params]).token
 

@@ -1,7 +1,5 @@
 module Snippets
-  class Validate
-    include Dry::Transaction::Operation
-
+  class Validate < BaseOperation
     def call(input)
       validation = SnippetSchema.(input[:params])
 

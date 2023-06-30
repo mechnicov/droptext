@@ -1,7 +1,5 @@
 module Snippets
-  class CheckRecaptcha
-    include Dry::Transaction::Operation
-
+  class CheckRecaptcha < BaseOperation
     MINIMUM_RECAPTCHA_SCORE = 0.75
     BASE_RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'.freeze
 
