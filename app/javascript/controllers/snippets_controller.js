@@ -12,6 +12,15 @@ export default class extends Controller {
     this.backdrop = document.querySelector('#unsafe-modal-backdrop')
     this.flashContainer = document.querySelector('#flash-container')
     this.flashText = document.querySelector('#flash-text')
+    this.captchaDeclaration = document.querySelector('#captcha-declaration')
+  }
+
+  hideCaptchaDeclaration() {
+    this.captchaDeclaration.classList.add('hidden')
+  }
+
+  showCaptchaDeclaration() {
+    this.captchaDeclaration.classList.remove('hidden')
   }
 
   loadCaptcha() {

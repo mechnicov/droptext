@@ -4,10 +4,9 @@
   <%= form_with model: @snippet, class: 'grow flex flex-col relative', id: :snippet_form,
     data: { turbo: false } do |form| %>
     <%= form.text_area :body,
-      required: true,
       data: {
         controller: 'snippets',
-        action: 'focus->snippets#loadCaptcha',
+        action: 'focus->snippets#loadCaptcha focus->snippets#hideCaptchaDeclaration blur->snippets#showCaptchaDeclaration',
         snippets_recaptcha_site_key_value: ENV['RECAPTCHA_SITE_KEY']
       },
       class: 'block w-full px-3 py-1.5 border border-solid border-gray-700
@@ -15,7 +14,7 @@
       font-mono focus:border-gray-800 focus:outline-none transition duration-150
       ease-in-out grow' %>
 
-    <div class="text-slate-700 text-xs pb-1 absolute bottom-20 left-2.5">
+    <div class="text-gray-400 text-xs pb-1 absolute bottom-20 left-2.5" id="captcha-declaration">
       This site is protected by reCAPTCHA and the Google
       <a href="https://policies.google.com/privacy">Privacy Policy</a> and
       <a href="https://policies.google.com/terms">Terms of Service</a> apply.
