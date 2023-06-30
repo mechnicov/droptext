@@ -3,6 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static values = {
     recaptchaSiteKey: String,
+    successMessage: String,
     unsafeWords: Array,
   }
 
@@ -61,21 +62,24 @@ export default class extends Controller {
     const { token, errors } = json
 
     if (token) {
-      window.location.href = `/s/${encodeURIComponent(token)}`
+      this.showAlert(this.successMessageValue)
+      setTimeout(() => window.location.href = `/s/${encodeURIComponent(token)}`, 1000)
     }
 
-    if (errors) {
-      this.flashContainer.classList.remove('hidden')
-      this.flashText.innerHTML = errors[0]
+    if (errors) this.showAlert(errors.join(' '))
+  }
 
-      setTimeout(
-        () => {
-          this.flashContainer.classList.add('hidden')
-          this.flashText.innerHTML = ''
-        },
-        2500
-      )
-    }
+  showAlert(text) {
+    this.flashContainer.classList.remove('hidden')
+    this.flashText.innerHTML = text
+
+    setTimeout(
+      () => {
+        this.flashContainer.classList.add('hidden')
+        this.flashText.innerHTML = ''
+      },
+      1500
+    )
   }
 
   toggleUnsafeConfirmModal() {
