@@ -12,7 +12,6 @@ export default class extends Controller {
     this.modal = document.querySelector('#unsafe-modal-confirm')
     this.backdrop = document.querySelector('#unsafe-modal-backdrop')
     this.flashContainer = document.querySelector('#flash-container')
-    this.flashText = document.querySelector('#flash-text')
   }
 
   loadCaptcha() {
@@ -62,24 +61,11 @@ export default class extends Controller {
     const { token, errors } = json
 
     if (token) {
-      this.showAlert(this.successMessageValue)
+      this.flashContainer.flash.showAlert(this.successMessageValue)
       setTimeout(() => window.location.href = `/s/${encodeURIComponent(token)}`, 1000)
     }
 
-    if (errors) this.showAlert(errors.join(' '))
-  }
-
-  showAlert(text) {
-    this.flashContainer.classList.remove('hidden')
-    this.flashText.innerHTML = text
-
-    setTimeout(
-      () => {
-        this.flashContainer.classList.add('hidden')
-        this.flashText.innerHTML = ''
-      },
-      1500
-    )
+    if (errors) this.flashContainer.flash.showAlert(errors.join(' '))
   }
 
   toggleUnsafeConfirmModal() {

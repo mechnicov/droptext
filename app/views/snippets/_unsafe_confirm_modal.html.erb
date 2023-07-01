@@ -8,7 +8,7 @@
           <%= sanitize t('.warning', span_tag: unsafe_word_tag), tags: %w[span p], attributes: %w[id class] %>
         </div>
 
-        <div class="flex items-center justify-begin mt-5 border-solid border-slate-200 rounded-b" data-controller="snippets" data-snippets-success-message-value=<%= t('success') %>>
+        <div class="flex items-center justify-begin mt-5 border-solid border-slate-200 rounded-b" data-controller="snippets" data-snippets-success-message-value="<%= t('success') %>">
           <button class="btn btn-red mr-2" type="button" data-action="snippets#toggleUnsafeConfirmModal">
             <%= t('.close')%>
           </button>

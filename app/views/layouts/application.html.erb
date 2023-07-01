@@ -17,17 +17,16 @@
         <%= link_to "📝 droptext.ru", root_path, data: { turbo: false } %>
       </header>
 
-      <div class="grow hidden" id="flash-container">
+      <div class="grow hidden" id="flash-container" data-controller="flash">
         <div class="flex flex-col justify-center">
           <div class="bg-amber-700 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="p-3 bg-amber-700 rounded-lg break-words text-white" id="flash-text">
+            <div class="p-3 bg-amber-700 rounded-lg break-words text-white" id="flash-text" data-flash-target="flashText">
             </div>
           </div>
         </div>
       </div>
 
-        <%= yield %>
-      </div>
+      <%= yield %>
 
       <footer class="text-slate-700 pt-6 pb-10 text-sm flex justify-between">
         <%= link_to t('.about'), snippet_path(token: 'about') %>
