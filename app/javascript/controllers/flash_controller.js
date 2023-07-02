@@ -29,7 +29,7 @@ export default class extends Controller {
         this.flashTextTarget.innerHTML = ''
         this.flashTextTarget.classList.remove(resultClass)
       },
-      1500
+      2500
     )
   }
 }
