@@ -9,12 +9,12 @@ export default class extends Controller {
   }
 
   static targets = [
+    'form',
     'backdrop',
     'modal',
   ]
 
   connect() {
-    this.form = document.querySelector('#snippet_form')
     this.flashContainer = document.querySelector('#flash-container')
   }
 
@@ -32,7 +32,7 @@ export default class extends Controller {
             action: 'callback'
           }
         ).then(token => {
-          this.form.querySelector('input[name="snippet[recaptcha_token]"]').value = token
+          this.formTarget.querySelector('input[name="snippet[recaptcha_token]"]').value = token
         })
 
         this.captchaLoaded = true
@@ -43,7 +43,7 @@ export default class extends Controller {
   }
 
   async submitForm(checkUnsafeWords = true) {
-    const formData = new FormData(this.form)
+    const formData = new FormData(this.formTarget)
     const body = formData.get('snippet[body]')
 
     if (!body) return this.flashContainer.flash.showAlert(this.emptyBodyMessageValue, 'failure')
@@ -58,7 +58,7 @@ export default class extends Controller {
     }
 
     const response =
-      await fetch(this.form.action, {
+      await fetch(this.formTarget.action, {
         method: 'post',
         body: formData
       })
