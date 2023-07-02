@@ -8,10 +8,13 @@ export default class extends Controller {
     unsafeWords: Array,
   }
 
+  static targets = [
+    'backdrop',
+    'modal',
+  ]
+
   connect() {
     this.form = document.querySelector('#snippet_form')
-    this.modal = document.querySelector('#unsafe-modal-confirm')
-    this.backdrop = document.querySelector('#unsafe-modal-backdrop')
     this.flashContainer = document.querySelector('#flash-container')
   }
 
@@ -72,10 +75,10 @@ export default class extends Controller {
   }
 
   toggleUnsafeConfirmModal() {
-    this.modal.classList.toggle('hidden')
-    this.backdrop.classList.toggle('hidden')
-    this.modal.classList.toggle('flex')
-    this.backdrop.classList.toggle('flex')
+    this.modalTarget.classList.toggle('hidden')
+    this.backdropTarget.classList.toggle('hidden')
+    this.modalTarget.classList.toggle('flex')
+    this.backdropTarget.classList.toggle('flex')
   }
 
   unsafeSnippetSubmitForm() {
