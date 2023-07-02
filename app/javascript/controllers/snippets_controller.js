@@ -61,11 +61,11 @@ export default class extends Controller {
     const { token, errors } = json
 
     if (token) {
-      this.flashContainer.flash.showAlert(this.successMessageValue)
+      this.flashContainer.flash.showAlert(this.successMessageValue, 'success')
       setTimeout(() => window.location.href = `/s/${encodeURIComponent(token)}`, 1000)
     }
 
-    if (errors) this.flashContainer.flash.showAlert(errors.join(' '))
+    if (errors) this.flashContainer.flash.showAlert(errors.join(' '), 'failure')
   }
 
   toggleUnsafeConfirmModal() {
