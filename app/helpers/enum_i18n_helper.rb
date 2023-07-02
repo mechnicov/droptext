@@ -5,7 +5,7 @@ module EnumI18nHelper
   # Example usage:
   # enum_options_for_select(User, :approval_state)
   def enum_options_for_select(class_name, enum)
-    class_name.send(enum.to_s.pluralize).map do |key, _|
+    class_name.public_send(enum.to_s.pluralize).map do |key, _|
       [enum_i18n(class_name, enum, key), key]
     end
   end
@@ -14,7 +14,7 @@ module EnumI18nHelper
   # Example usage:
   # enum_l(user, :approval_state)
   def enum_l(model, enum)
-    enum_i18n(model.class, enum, model.send(enum))
+    enum_i18n(model.class, enum, model.public_send(enum))
   end
 
   # Returns the i18n string for the enum key

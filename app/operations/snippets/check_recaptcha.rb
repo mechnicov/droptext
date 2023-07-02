@@ -1,19 +1,16 @@
 module Snippets
   class CheckRecaptcha < BaseOperation
-    MINIMUM_RECAPTCHA_SCORE = 0.75
-    BASE_RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'.freeze
-
     def call(input)
-      secret_key = ENV['RECAPTCHA_SECRET_KEY']
-      token = CGI.escape(input[:params].delete(:recaptcha_token).to_s)
+      secret = Settings::RECAPTCHA_SECRET_KEY
+      response = CGI.escape(input[:params].delete(:recaptcha_token).to_s)
 
-      recaptcha_url = URI.parse(BASE_RECAPTCHA_URL)
-      recaptcha_url.query = { secret: secret_key, response: token }.to_query
+      recaptcha_url = URI.parse(Settings::BASE_RECAPTCHA_URL)
+      recaptcha_url.query = { secret: secret, response: response }.to_query
 
-      response = HTTParty.get(recaptcha_url)
-      json = JSON.parse(response.body, symbolize_names: true)
+      recaptcha_response = HTTParty.get(recaptcha_url)
+      json = JSON.parse(recaptcha_response.body, symbolize_names: true)
 
-      return Success(input) if json[:success] && json[:score] >= MINIMUM_RECAPTCHA_SCORE && json[:action] == 'callback'
+      return Success(input) if json[:success] && json[:score] >= Settings::MINIMUM_RECAPTCHA_SCORE && json[:action] == 'callback'
 
       Failure(errors: [I18n.t('recaptcha.error')])
     end

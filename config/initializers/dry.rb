@@ -1,4 +1,5 @@
 require 'dry/system/container'
+require 'dry/transaction/operation'
 
 module Droptext
   class Container < Dry::System::Container

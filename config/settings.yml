@@ -1,0 +1,74 @@
+og_meta_tags:
+  title: Droptext — закинь текст, отправь ссылку
+  site_name: Droptext
+  description: Площадка для публикации снипетов
+recaptcha:
+  base_recaptcha_url: https://www.google.com/recaptcha/api/siteverify
+  minimum_score: 0.75
+snippet:
+  languages:
+    - auto
+    - apache
+    - bash
+    - c
+    - coffeescript
+    - cpp
+    - crystal
+    - csharp
+    - csp
+    - css
+    - dart
+    - diff
+    - django
+    - dockerfile
+    - elixir
+    - elm
+    - erb
+    - erlang
+    - go
+    - gradle
+    - graphql
+    - groovy
+    - haml
+    - haskell
+    - ini
+    - java
+    - javascript
+    - json
+    - kotlin
+    - less
+    - lisp
+    - lua
+    - makefile
+    - markdown
+    - matlab
+    - nginx
+    - nix
+    - objectivec
+    - perl
+    - pgsql
+    - php
+    - plaintext
+    - properties
+    - protobuf
+    - python
+    - r
+    - ruby
+    - scala
+    - scheme
+    - scss
+    - shell
+    - smalltalk
+    - sql
+    - swift
+    - typescript
+    - vim
+    - yaml
+  token_length: 3
+  unsafe_words:
+    - key
+    - mnemonic
+    - password
+    - secret
+    - token
+    - пароль
