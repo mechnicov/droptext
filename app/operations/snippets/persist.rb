@@ -11,7 +11,7 @@ module Snippets
     private
 
     def generate_token
-      SecureRandom.alphanumeric(Snippet::TOKEN_LENGHT)
+      SecureRandom.alphanumeric(Settings::SNIPPET_TOKEN_LENGHT)
     end
   end
 end

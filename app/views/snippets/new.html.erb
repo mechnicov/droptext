@@ -7,7 +7,7 @@
       data: {
         controller: 'snippets',
         action: 'focus->snippets#loadCaptcha',
-        snippets_recaptcha_site_key_value: ENV['RECAPTCHA_SITE_KEY']
+        snippets_recaptcha_site_key_value: Settings::RECAPTCHA_SITE_KEY,
       },
       class: 'block w-full px-3 py-1.5 border border-solid border-gray-700
       bg-slate-700 focus:text-slate-100 focus:bg-slate-800
@@ -25,7 +25,7 @@
     <%= form.hidden_field :recaptcha_token %>
   <% end %>
 
-  <div class="mt-5" data-controller="snippets" data-snippets-unsafe-words-value="<%= Rails.configuration.unsafe_words %>" data-snippets-success-message-value="<%= t('success') %>">
+  <div class="mt-5" data-controller="snippets" data-snippets-unsafe-words-value="<%= Settings::SNIPPET_UNSAFE_WORDS %>" data-snippets-success-message-value="<%= t('success') %>">
     <button class="btn btn-emerald" type="button" data-action="click->snippets#submitForm"><%= t('.save')%></button>
   </div>
 

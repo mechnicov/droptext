@@ -1,6 +1,0 @@
-key
-mnemonic
-password
-secret
-token
-пароль

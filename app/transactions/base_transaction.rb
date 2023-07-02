@@ -1,5 +1,3 @@
-require 'dry/transaction/operation'
-
 class BaseTransaction
   include Dry::Transaction(container: Droptext::Container)
 
