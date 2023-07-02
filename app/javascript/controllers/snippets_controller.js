@@ -4,6 +4,7 @@ export default class extends Controller {
   static values = {
     recaptchaSiteKey: String,
     successMessage: String,
+    emptyBodyMessage: String,
     unsafeWords: Array,
   }
 
@@ -40,10 +41,12 @@ export default class extends Controller {
 
   async submitForm(checkUnsafeWords = true) {
     const formData = new FormData(this.form)
+    const body = formData.get('snippet[body]')
+
+    if (!body) return this.flashContainer.flash.showAlert(this.emptyBodyMessageValue, 'failure')
 
     if (checkUnsafeWords) {
-      const unsafeWord =
-        new RegExp(this.unsafeWordsValue.join('|'), 'i').exec(formData.get('snippet[body]'))?.shift()
+      const unsafeWord = new RegExp(this.unsafeWordsValue.join('|'), 'i').exec(body)?.shift()
 
       if (unsafeWord) {
         document.querySelector('#unsafe-words').innerHTML = unsafeWord

@@ -25,7 +25,7 @@
     <%= form.hidden_field :recaptcha_token %>
   <% end %>
 
-  <div class="mt-5" data-controller="snippets" data-snippets-unsafe-words-value="<%= Settings::SNIPPET_UNSAFE_WORDS %>" data-snippets-success-message-value="<%= t('success') %>">
+  <div class="mt-5" data-controller="snippets" data-snippets-unsafe-words-value="<%= Settings::SNIPPET_UNSAFE_WORDS %>" data-snippets-success-message-value="<%= t('success') %>" data-snippets-empty-body-message-value="<%= t('dry_schema.errors.snippet.rules.body.filled?') %>">
     <button class="btn btn-emerald" type="button" data-action="click->snippets#submitForm"><%= t('.save')%></button>
   </div>
 
