@@ -1,5 +1,9 @@
 module ApplicationHelper
   def og_meta_tags
-    Settings::OG_META_TAGS_HTML
+    settings.og_meta_tags_html
+  end
+
+  def settings
+    Settings
   end
 end

@@ -1,4 +1,11 @@
-<div class="flex flex-col h-full" data-controller="snippets" data-snippets-recaptcha-site-key-value="<%= Settings::RECAPTCHA_SITE_KEY %>" data-snippets-unsafe-words-value="<%= Settings::SNIPPET_UNSAFE_WORDS %>" data-snippets-success-message-value="<%= t('success') %>" data-snippets-empty-body-message-value="<%= t('dry_schema.errors.snippet.rules.body.filled?') %>">
+<div
+  class="flex flex-col h-full"
+  data-controller="snippets"
+  data-snippets-recaptcha-site-key-value="<%= settings.recaptcha_site_key %>"
+  data-snippets-unsafe-words-value="<%= settings.snippet_unsafe_words %>"
+  data-snippets-success-message-value="<%= t('success') %>"
+  data-snippets-empty-body-message-value="<%= t('dry_schema.errors.snippet.rules.body.filled?') %>"
+>
   <h1 class="text-2xl mb-4"><%= t('.write_something')%></h1>
 
   <%= form_with model: @snippet, class: 'grow flex flex-col relative group', id: :snippet_form, data: { snippets_target: 'form' } do |form| %>
