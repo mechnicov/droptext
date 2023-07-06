@@ -38,5 +38,8 @@
 !/app/assets/builds/.keep
 /node_modules
 
+puma.pid
+puma.state
+
 # Ignore dotenv variables file
 .env
