@@ -1,7 +1,7 @@
 <% snippet_body = h(@snippet.body) %>
 
 <div class="relative flex h-full group text-sm md:text-base">
-  <span class="absolute top-3 right-5">
+  <span class="absolute top-3 right-5 flex space-x-1.5">
     <span class="js-clipboard btn btn-amber opacity-25 group-hover:opacity-75 relative cursor-pointer" data-clipboard-text="<%= request.original_url %>" title="<%= t('.copy_url') %>">
       <svg class="inline" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="currentColor" d="m7.775 3.275l1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0a.751.751 0 0 1 .018-1.042a.751.751 0 0 1 1.042-.018a1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018a.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018a.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0a.751.751 0 0 1-.018 1.042a.751.751 0 0 1-1.042.018a1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"/></svg>
       <div class="hidden w-28 bg-amber-700 text-white text-center text-xs py-2 absolute z-10 -bottom-full right-0 ml-14 px-3 pointer-events-none copied-tooltip"><%= t('.copied') %></div>
