@@ -80,6 +80,8 @@ ru:
       write_something: Напиши здесь что-нибудь
     show:
       raw: Простым текстом
+      copied: Скопировано!
+      copy_text: Скопировать сниппет
       copy_url: Скопировать ссылку на эту страницу
     unsafe_confirm_modal:
       close: Закрыть

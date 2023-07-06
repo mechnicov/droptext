@@ -8,10 +8,10 @@ import Choices from 'choices.js'
 document.addEventListener('turbo:load', (event) => {
   hljs.highlightAll()
 
-  new ClipboardJS('.js-clipboard', {
-    text: function(trigger) {
-      return trigger.getAttribute('data-clipboard-text')
-    }
+  new ClipboardJS('.js-clipboard', { text: trigger => trigger.getAttribute('data-clipboard-text') }).on('success', e => {
+    const tooltip = e.trigger.querySelector('.copied-tooltip')
+    tooltip.classList.remove('hidden')
+    setTimeout(() => tooltip.classList.add('hidden'), 300)
   })
 
   const languageSelect = document.querySelector('#snippet_language')
