@@ -12,8 +12,8 @@ Settings::SNIPPET_UNSAFE_WORDS = settings[:snippet][:unsafe_words].freeze
 
 Settings::BASE_RECAPTCHA_URL = settings[:recaptcha][:base_recaptcha_url].freeze
 Settings::MINIMUM_RECAPTCHA_SCORE = settings[:recaptcha][:minimum_score]
-Settings::RECAPTCHA_SITE_KEY = ENV['RECAPTCHA_SITE_KEY'].freeze
-Settings::RECAPTCHA_SECRET_KEY = ENV['RECAPTCHA_SECRET_KEY'].freeze
+Settings::RECAPTCHA_SITE_KEY = Rails.application.credentials.config[:recaptcha][:site_key].freeze
+Settings::RECAPTCHA_SECRET_KEY = Rails.application.credentials.config[:recaptcha][:secret_key].freeze
 
 Settings.constants.each do |constant|
   Settings.define_singleton_method(constant.downcase) { Settings.const_get(constant) }

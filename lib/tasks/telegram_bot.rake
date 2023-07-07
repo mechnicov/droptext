@@ -1,32 +1,24 @@
 require 'telegram/bot'
-require 'dotenv/load'
 
 namespace :telegram_bot do
-  desc "Sends a message, containing new posted snippets"
+  desc 'Sends a message, containing new posted snippets'
   task notify_about_new_snippets: :environment do
     last_snippets = Snippet.where('created_at > ?', 24.hours.ago)
 
-    exit if last_snippets.empty?
+    next if last_snippets.empty?
 
-    owner_ids = ENV['OWNER_IDS'].split(';').map(&:to_i)
-    bot_token = ENV['TELEGRAM_BOT_API_TOKEN']
-    message = snippets_to_message(last_snippets)
+    Rails.application.credentials.config[:telegram] => { bot_token:, owner_ids: }
+
+    text = I18n.t('telegram.last_published_snippets')
+
+    last_snippets.find_each do |snippet|
+      text << "\n" << Rails.application.routes.url_helpers.snippet_url(token: snippet.token)
+    end
 
     Telegram::Bot::Client.run(bot_token) do |bot|
       owner_ids.each do |chat_id|
-        bot.api.sendMessage(chat_id: chat_id, text: message)
+        bot.api.send_message(chat_id: chat_id, text: text)
       end
     end
-  end
-
-  def snippets_to_message(snippets)
-    url_base = "https://droptext.ru/s"
-    message = ["Последние опубликованные снипеты:"]
-
-    message += snippets.map do |snippet|
-      "#{url_base}/#{snippet.token}"
-    end
-
-    message.join("\n")
   end
 end
