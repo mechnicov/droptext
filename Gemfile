@@ -18,6 +18,7 @@ gem 'whenever', require: false
 
 group :development, :test do
   gem 'debug'
+  gem 'encrypted_credentials', '~> 1.0', require: false
   gem 'sqlite3', '~> 1.4'
 end
 
