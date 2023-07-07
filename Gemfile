@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
@@ -18,7 +17,7 @@ gem 'turbo-rails'
 gem 'whenever', require: false
 
 group :development, :test do
-  gem 'debug', platforms: %i[ mri mingw x64_mingw ]
+  gem 'debug'
   gem 'sqlite3', '~> 1.4'
 end
 
