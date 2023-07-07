@@ -5,7 +5,7 @@ module Snippets
       response = CGI.escape(input[:params].delete(:recaptcha_token).to_s)
 
       recaptcha_url = URI.parse(Settings::BASE_RECAPTCHA_URL)
-      recaptcha_url.query = { secret: secret, response: response }.to_query
+      recaptcha_url.query = { secret:, response: }.to_query
 
       recaptcha_response = HTTParty.get(recaptcha_url)
       json = JSON.parse(recaptcha_response.body, symbolize_names: true)

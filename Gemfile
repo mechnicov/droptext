@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.0.2'
+ruby '3.1.4'
 
 gem 'bootsnap', require: false
 gem 'cssbundling-rails', '~> 1.1'

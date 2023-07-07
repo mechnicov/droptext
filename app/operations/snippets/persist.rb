@@ -3,7 +3,7 @@ module Snippets
     def call(input)
       token = Snippet.create!(token: generate_token, **input[:params]).token
 
-      Success(token: token)
+      Success(token:)
     rescue ActiveRecord::RecordNotUnique
       retry
     end

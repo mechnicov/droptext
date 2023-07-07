@@ -17,7 +17,7 @@ namespace :telegram_bot do
 
     Telegram::Bot::Client.run(bot_token) do |bot|
       owner_ids.each do |chat_id|
-        bot.api.send_message(chat_id: chat_id, text: text)
+        bot.api.send_message(chat_id:, text:)
       end
     end
   end
