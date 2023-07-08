@@ -13,7 +13,11 @@ describe Snippets::Persist do
 
       it { is_expected.to be_success }
 
-      it 'create new record with new token' do
+      it 'inserts new record' do
+        expect { subject }.to change(Snippet, :count).from(1).to(2)
+      end
+
+      it 'returns token' do
         expect(subject.value!).to eq(token: new_token)
       end
     end
@@ -23,7 +27,11 @@ describe Snippets::Persist do
 
       it { is_expected.to be_success }
 
-      it 'create new record with new token' do
+      it 'inserts new record' do
+        expect { subject }.to change(Snippet, :count).from(0).to(1)
+      end
+
+      it 'returns token' do
         expect(subject.value!).to eq(token: new_token)
       end
     end
