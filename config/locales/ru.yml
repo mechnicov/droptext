@@ -65,7 +65,12 @@ ru:
       snippet:
         rules:
           body:
-            filled?: Сниппет не может быть пустым
+            filled?: &blank_body Сниппет не может быть пустым
+            key?: *blank_body
+          language:
+            filled?: &blank_body Должен присутствовать язык
+            included_in?: Допускается только язык из списка
+            key?: *blank_body
   layouts:
     application:
       about: Что это?
