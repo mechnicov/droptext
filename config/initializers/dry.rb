@@ -11,4 +11,4 @@ module Droptext
   end
 end
 
-Droptext::Container.finalize!
+Droptext::Container.finalize! unless Rails.env.test?

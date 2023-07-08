@@ -3,5 +3,5 @@ SnippetSchema = Dry::Schema.Params do
   config.messages.namespace = :snippet
 
   required(:body).filled
-  required(:language).filled
+  required(:language).filled(included_in?: Settings::SNIPPET_LANGUAGES)
 end
