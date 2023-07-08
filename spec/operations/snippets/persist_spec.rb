@@ -13,7 +13,7 @@ describe Snippets::Persist do
 
       it { is_expected.to be_success }
 
-      it 'inserts new record' do
+      it 'creates new snippet' do
         expect { subject }.to change(Snippet, :count).from(1).to(2)
       end
 
@@ -27,7 +27,7 @@ describe Snippets::Persist do
 
       it { is_expected.to be_success }
 
-      it 'inserts new record' do
+      it 'creates new snippet' do
         expect { subject }.to change(Snippet, :count).from(0).to(1)
       end
 
