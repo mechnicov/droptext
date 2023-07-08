@@ -4,9 +4,7 @@ module Snippets
       validation = SnippetSchema.(input[:params])
 
       if validation.success?
-        input[:params] = validation.to_h
-
-        Success(input)
+        Success(params: validation.to_h)
       else
         Failure(errors: validation.errors.to_h.values.flatten)
       end
