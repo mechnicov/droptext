@@ -13,16 +13,15 @@
 
   <body class="h-screen bg-slate-900 text-slate-200">
     <main class="h-full max-w-4xl mx-auto pt-10 px-8 box-border flex flex-col">
-      <header class="font-bold mb-6 uppercase text-sm md:text-base">
-        <%= link_to '📝 droptext.ru', root_path %>
-      </header>
-
-      <div class="grow hidden" id="flash-container" data-controller="flash">
-        <div class="flex flex-col justify-center">
-          <div class="p-3 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding block mb-3 break-words bg-amber-700 text-white" role="alert" aria-live="assertive" aria-atomic="true" id="flash-text" data-flash-target="flashText">
+      <header class="mb-6">
+        <div class="grow hidden" id="flash-container" data-controller="flash">
+          <div class="flex flex-col justify-center">
+            <div class="p-3 shadow-lg max-w-full text-sm pointer-events-auto bg-clip-padding block mb-3 break-words bg-amber-700 text-white" role="alert" aria-live="assertive" aria-atomic="true" id="flash-text" data-flash-target="flashText">
+            </div>
           </div>
         </div>
-      </div>
+        <%= link_to '📝 droptext.ru', root_path, class: 'font-bold uppercase text-sm md:text-base' %>
+      </header>
 
       <%= yield %>
 
