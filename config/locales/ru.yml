@@ -80,8 +80,10 @@ ru:
   snippets:
     new:
       item_select: Нажмите для выбора
+      language: Язык
       no_results: Ничего не найдено
       save: Сохранить
+      text: Текст
       write_something: Напиши здесь что-нибудь
     show:
       raw: Простым текстом
