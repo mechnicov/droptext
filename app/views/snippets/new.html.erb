@@ -1,3 +1,5 @@
+<% content_for(:custom_js) { javascript_include_tag('new_snippet', 'data-turbo-track': 'reload', defer: true) } %>
+
 <div
   class="flex flex-col h-full"
   data-controller="snippets"

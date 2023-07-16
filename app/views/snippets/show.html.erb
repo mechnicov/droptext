@@ -1,3 +1,5 @@
+<% content_for(:custom_js) { javascript_include_tag('show_snippet', 'data-turbo-track': 'reload', defer: true) } %>
+
 <% snippet_body = h(@snippet.body) %>
 
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="hidden">

@@ -60,3 +60,7 @@ hljs.registerLanguage('yaml', require('highlight.js/lib/languages/yaml'))
 hljs.HighlightJS = hljs
 hljs.default = hljs
 module.exports = hljs
+
+document.addEventListener('turbo:load', () => {
+  hljs.highlightAll()
+})
