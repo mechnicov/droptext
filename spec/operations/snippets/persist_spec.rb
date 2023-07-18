@@ -23,16 +23,18 @@ describe Snippets::Persist do
     end
 
     context 'when snippet with generated token does not exist in the database' do
-      before { allow(SecureRandom).to receive(:alphanumeric).and_return(new_token) }
-
       it { is_expected.to be_success }
 
       it 'creates new snippet' do
         expect { subject }.to change(Snippet, :count).from(0).to(1)
       end
 
-      it 'returns token' do
-        expect(subject.value!).to eq(token: new_token)
+      it 'returns created snippet token' do
+        expect(subject.value!).to eq(token: Snippet.last.token)
+      end
+
+      it 'generates token with specific format' do
+        expect(subject.value![:token]).to match(/\A[a-z\d]{#{Settings::SNIPPET_TOKEN_LENGHT}}\z/i)
       end
     end
   end
