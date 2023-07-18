@@ -60,7 +60,7 @@ ru:
           typescript: TypeScript
           vim: Vim
           yaml: YAML
-  dry_schema:
+  dry_validation:
     errors:
       snippet:
         rules:

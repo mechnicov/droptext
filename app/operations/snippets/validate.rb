@@ -1,7 +1,9 @@
 module Snippets
   class Validate < BaseOperation
+    include Droptext::Import[create_snippet_validation: 'snippets.create_contract']
+
     def call(input)
-      validation = SnippetSchema.(input[:params])
+      validation = create_snippet_validation.(input[:params])
 
       if validation.success?
         Success(params: validation.to_h)
