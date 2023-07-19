@@ -6,7 +6,7 @@ module Droptext
     extend Dry::Container::Mixin
 
     configure do |config|
-      %w[contracts operations].each do |folder|
+      %w[contracts operations transactions].each do |folder|
         config.component_dirs.add Rails.root.join('app', folder)
       end
     end
